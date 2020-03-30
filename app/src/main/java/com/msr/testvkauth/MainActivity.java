@@ -12,14 +12,18 @@ import com.vk.api.sdk.auth.VKAccessToken;
 import com.vk.api.sdk.auth.VKAuthCallback;
 import com.vk.api.sdk.auth.VKScope;
 
+import java.util.Collection;
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        VK.login(this);
+        Collection<VKScope> scopes = new ArrayList<VKScope>();
+        scopes.add(VKScope.OFFLINE);
+        VK.login(this, scopes);
     }
 
     protected String str(String s) {
